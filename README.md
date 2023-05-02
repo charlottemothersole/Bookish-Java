@@ -32,9 +32,7 @@ Before you run the app you will need to make sure you've got Postgres installed 
 
 1. Download and install the [PostgreSQL server software](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) if you haven't already.
 
-2. Make sure you've added Postgres to your PATH (`C:\Program Files\PostgreSQL\<your version number>\bin`).
-
-3. Open the Windows Start menu and search for "pgAdmin". When you start "pgAdmin" for the first time, you'll be asked to set a password for your superuser.
+2. Open the Windows Start menu and search for "pgAdmin". When you start "pgAdmin" for the first time, you'll be asked to set a password for your superuser.
 
 ### Set up Bookish user
 
@@ -44,6 +42,6 @@ Before you run the app you will need to make sure you've got Postgres installed 
 
 ### Set up Bookish database
 
-1. Inside your `PostgreSQL <version number>` server, right-click on Databases and create a new Database with the name `bookish` and the owner `bookish` (both in the General tab).
+1. Inside your `PostgreSQL` server, right-click on *Databases* and create a new Database with the name `bookish` and the owner `bookish` (both in the General tab).
 
 2. Click `Save` to create the database.
