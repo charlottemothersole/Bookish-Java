@@ -22,7 +22,7 @@
 
 6. Run `./gradlew run` in the console.
 
-7. You should now be able to find your code running at: `http://localhost:8080/`
+7. You should now be able to find your code running at: `http://localhost:8080/books`
 
 ## Setting up Postgres
 
@@ -30,9 +30,22 @@ Before you run the app you will need to make sure you've got Postgres installed 
 
 ### Install Postgres
 
-1. Download and install the [PostgreSQL server software](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) if you haven't already.
+1. Download and install the [PostgreSQL server software](https://www.postgresql.org/download/) if you haven't already.
 
-2. Open the Windows Start menu and search for "pgAdmin". When you start "pgAdmin" for the first time, you'll be asked to set a password for your superuser.
+### Start Postgres
+
+#### Windows
+
+Open the Windows Start menu and search for "pgAdmin". When you start "pgAdmin" for the first time, you'll be asked to set a password for your superuser.
+
+#### Mac
+
+Run Postgres.app
+
+#### Linux
+
+Ubuntu users try `sudo systemctl enable postgresql.service`
+
 
 ### Set up Bookish user
 
