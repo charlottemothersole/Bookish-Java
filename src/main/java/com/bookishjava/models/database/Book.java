@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class Book {
-    private @Id @GeneratedValue Long id;
+    private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
     private String title;
 
     public Long getId() {
@@ -49,8 +49,4 @@ public class Book {
             return false;
         return true;
     }
-
-    
-
-    
 }
