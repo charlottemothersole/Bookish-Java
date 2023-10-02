@@ -15,55 +15,60 @@ let getBooks = () => {
         })
         .then(response => response.json())
         .then(data => {
-//            console.log(data);
-//            dbData = data;
+            renderBooks(data);
+        }
+    );
+}
+
+let getBookById = () => {
+    let idInput = document.getElementById('idInput');
+    fetch("http://localhost:8080/books/" + idInput.value, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
             renderBooks(data);
         }
     );
 }
 
 function renderBooks(data) {
-    console.log(data);
+//create page header
+    let bookHeader = document.createElement('h2');
+//    create empty html variable
     let html = '';
-    data.forEach(book => {
-        let htmlSegment = `<div class="user"> ${book}
-                        </div>`;
-
-        html += htmlSegment;
-    });
-
+//    find container div
     let container = document.querySelector('.container');
-    container.innerHTML = html;
+//append to the html variable
+    if(Array.isArray(data)) {
+        bookHeader.innerText = 'All Books';
+        container.appendChild(bookHeader);
+        //    create empty list element
+        let bookList = document.createElement('ul');
+        bookList.style.padding = '0';
+        bookList.style.listStyle = 'none';
+        //    loop through data and for each object create list element containing object title
+        data.forEach(book => {
+            let listItem = `<li class="book"> ${book.title} </li>`;
+            html += listItem;
+        });
+        //    set list elements inner html to ul of li elements
+        bookList.innerHTML = html;
+        container.appendChild(bookList);
+    } else {
+        bookHeader.innerText = 'Search Results';
+        container.appendChild(bookHeader);
+        let result = `<p>${data.title}</p>`
+        html += result;
+        container.innerHTML += html;
+    }
 }
-getBooks();
-//renderBooks();
 
-//
-//let displayBooks = (data) => {
-//    let booksContainer = document.createElement("div");
-//    booksContainer.innerHTML = tab;
-//    let tab =
-//        `<tr>
-//          <th>Name</th>
-//          <th>Office</th>
-//          <th>Position</th>
-//          <th>Salary</th>
-//         </tr>`;
-//
-//    // Loop to access all rows
-//    for (let r of data.list) {
-//        tab += `<tr>
-//        <td>${r.name} </td>
-//        <td>${r.office}</td>
-//        <td>${r.position}</td>
-//        <td>${r.salary}</td>
-//    </tr>`;
-//    }
-//    // Setting innerHTML as tab variable
-//    document.getElementById("app").appendChild(booksContainer);
-//}
-
-
-//document.querySelector('#app').innerHTML = `
-//  <div> this is where data will go ${dbData}
-//  </div>
+let allBooksButton = document.getElementById('allBooks');
+allBooksButton.addEventListener("click", getBooks);
+let getBookByIdButton = document.getElementById('idButton');
+getBookByIdButton.addEventListener("click", getBookById);
